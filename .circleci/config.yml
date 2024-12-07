@@ -1,0 +1,25 @@
+version: 2.1
+
+jobs:
+  execute-ruby-script:
+    docker:
+      - image: circleci/ruby:3.2  # Ruby Docker image
+    steps:
+      - checkout  # Check out the code from the repository
+      - run:
+          name: Install Dependencies (if any)
+          command: |
+            if [ -f Gemfile ]; then
+              bundle install
+            else
+              echo "No Gemfile found, skipping dependency installation."
+            fi
+      - run:
+          name: Run Ruby Script
+          command: ruby ruby1.rb  # Execute the Ruby script
+
+workflows:
+  version: 2
+  run-script:
+    jobs:
+      - execute-ruby-script

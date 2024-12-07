@@ -1,4 +1,5 @@
 # script.rb
+# my comment
 #puts "Looking for final output"
 #puts "Uncheck for following in circleCI"
 puts 'cimg/ruby'
